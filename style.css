@@ -1,0 +1,43 @@
+/* Sade, Tkinter benzeri gorunum: girdiler ustte, grafik ve tablo altta */
+* { box-sizing: border-box; }
+body { margin: 0; padding: 10px; background: #f0f0f0; font-family: Arial, sans-serif; font-size: 14px; color: #222; }
+.pencere { max-width: 940px; min-height: 630px; margin: 0 auto; background: #f0f0f0; }
+form { padding: 5px 10px 0; }
+.satir { display: grid; grid-template-columns: 145px 155px 145px 155px; align-items: center; column-gap: 9px; row-gap: 10px; margin: 9px 0 14px; }
+.satir label { white-space: nowrap; }
+.denklem-satiri { grid-template-columns: 145px minmax(0, 1fr); }
+.denklem-satiri strong { font-size: 18px; }
+.satir input, .satir select, button { height: 28px; border: 1px solid #aaa; border-radius: 2px; background: white; padding: 3px 7px; font: inherit; min-width: 0; }
+.satir input:focus, .satir select:focus, button:focus-visible { outline: 2px solid #8db8e2; outline-offset: 1px; }
+.yontem-satiri { grid-template-columns: 145px 290px auto; }
+button { justify-self: start; cursor: pointer; background: #e9e9e9; border-color: #999; padding: 3px 12px; white-space: nowrap; }
+button:hover { background: #dedede; }
+.hata { margin: 6px 0 10px; padding: 9px 11px; border: 1px solid #c88484; background: #fff2f2; color: #8a2323; }
+.grafik-alani { margin: 14px 14px 12px; background: #fff; height: 465px; }
+#grafik { display: block; width: 100%; height: 100%; }
+@media (max-width: 680px) {
+  body { padding: 6px; }
+  form { padding: 4px 5px; }
+  .satir, .yontem-satiri { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 7px 10px; }
+  .denklem-satiri { grid-template-columns: 1fr; }
+  .denklem-satiri input { width: 100%; }
+  .satir label { white-space: normal; }
+  .satir input { width: 100%; }
+  .yontem-satiri label { grid-column: 1; }
+  .yontem-satiri select { grid-column: 2; width: 100%; }
+  .yontem-satiri button { grid-column: 1 / -1; }
+  .grafik-alani { margin: 8px 2px; height: 400px; }
+}
+.tablo-alani { margin: 14px; }
+.tablo-alani h2 { font-size: 17px; font-weight: 600; margin: 0 0 8px; }
+.tablo-aciklama { margin: 0 0 9px; color: #555; font-size: 13px; }
+.tablo-kaydir { background: white; border: 1px solid #bbb; max-height: 310px; overflow: auto; }
+#veri-tablosu { border-collapse: collapse; width: 100%; font-size: 13px; font-variant-numeric: tabular-nums; }
+#veri-tablosu th, #veri-tablosu td { border-bottom: 1px solid #ddd; padding: 7px 12px; text-align: right; }
+#veri-tablosu th { position: sticky; top: 0; background: #e8e8e8; border-bottom: 1px solid #aaa; }
+#veri-tablosu th:first-child, #veri-tablosu td:first-child { text-align: center; width: 25%; }
+#veri-tablosu tr:last-child td { border-bottom: 0; }
+@media (max-width: 680px) {
+  .tablo-alani { margin: 10px 2px; }
+  #veri-tablosu th, #veri-tablosu td { padding: 7px 5px; }
+}
