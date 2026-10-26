@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1. Dereceden Diferansiyel Denklem Çözücü</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="birinci_derece_cozucu.js"></script>
+  <script defer src="denklem.js"></script>
+  <script defer src="arayuz.js"></script>
+</head>
+<body>
+  <main class="pencere">
+    <!-- Python arayuz.py dosyasındaki girişlerin web karşılıkları -->
+    <form id="cozum-formu">
+      <div class="satir denklem-satiri">
+        <label for="denklem"><strong>y' = f(x,y)</strong></label>
+        <input id="denklem" name="denklem" value="3*exp(-x)-0.4*y" spellcheck="false" autocomplete="off" required>
+      </div>
+      <div class="satir">
+        <label for="x0">Başlangıç x (x0)</label>
+        <input id="x0" name="x0" type="number" step="any" value="0" required>
+        <label for="y0">Başlangıç y (y0)</label>
+        <input id="y0" name="y0" type="number" step="any" value="5" required>
+      </div>
+      <div class="satir">
+        <label for="xb">Bitiş x</label>
+        <input id="xb" name="xb" type="number" step="any" value="3" required>
+        <label for="adim">Adım sayısı</label>
+        <input id="adim" name="adim" type="number" min="1" max="10000" step="1" value="60" required>
+      </div>
+      <div class="satir yontem-satiri">
+        <label for="yontem">Yöntem</label>
+        <select id="yontem" name="yontem">
+          <option value="0">Euler</option>
+          <option value="1">Runge-Kutta 2 (Orta nokta)</option>
+          <option value="2" selected>Runge-Kutta 4</option>
+        </select>
+        <button type="submit">Çöz ve Grafiği Çiz</button>
+      </div>
+      <p id="hata" class="hata" role="alert" hidden></p>
+    </form>
+    <section class="grafik-alani" aria-label="Sayısal çözüm grafiği">
+      <canvas id="grafik" role="img" aria-label="Sayısal çözüm: x eksenine karşı y(x) eğrisi"></canvas>
+    </section>
+    <section class="tablo-alani" aria-labelledby="tablo-baslik">
+      <h2 id="tablo-baslik">Veri Tablosu</h2>
+      <p id="tablo-aciklama" class="tablo-aciklama">Çözüm yapıldığında hesaplanan değerler burada görünecektir.</p>
+      <div class="tablo-kaydir">
+        <table id="veri-tablosu">
+          <thead>
+            <tr><th scope="col">Adım (i)</th><th scope="col">x</th><th scope="col">y(x)</th></tr>
+          </thead>
+          <tbody id="tablo-govdesi"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
